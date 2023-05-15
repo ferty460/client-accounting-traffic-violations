@@ -1,14 +1,13 @@
 package com.example.client.controller;
 
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 public class ApplicationController {
     @FXML
-    private JFXButton btn_auto, btn_drivers, btn_penalties, btn_violations;
+    private Button btn_auto, btn_drivers, btn_penalties, btn_violations;
 
     @FXML
     private AnchorPane pnl_cars, pnl_drivers, pnl_penalties, pnl_violations;
@@ -24,6 +23,7 @@ public class ApplicationController {
         } else if (event.getSource() == btn_penalties) {
             pnl_penalties.toFront();
         }
+
     }
 
     @FXML
