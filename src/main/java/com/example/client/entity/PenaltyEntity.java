@@ -17,4 +17,9 @@ public class PenaltyEntity {
     private int penalty;
 
     private List<ViolationEntity> violations;
+
+    @Override
+    public String toString() {
+        return String.valueOf(penalty);
+    }
 }

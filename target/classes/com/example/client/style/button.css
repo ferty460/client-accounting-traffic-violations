@@ -1,11 +1,9 @@
-.anchor-pane .button {
+.button {
     -fx-background-color: #2C47A4;
+    -fx-background-radius: 10;
+    -fx-pref-height: 35;
 }
 
-.anchor-pane .button:hover {
-    -fx-background-color: #6476B5;
-}
-
-.anchor-pane .button:pressed {
-    -fx-background-color: #6476B5;
+.button:hover {
+    -fx-effect: dropshadow(one-pass-box, #84bff5, 0.5, 0.1, 2.0, 2.0);
 }

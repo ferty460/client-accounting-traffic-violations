@@ -13,42 +13,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controller.ApplicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controller.ApplicationController">
    <children>
       <AnchorPane layoutX="170.0" layoutY="25.0" prefHeight="515.0" prefWidth="632.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="168.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <AnchorPane fx:id="pnl_cars" layoutY="1.0" prefHeight="515.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="194.0" prefHeight="515.0" prefWidth="438.0" style="-fx-background-color: #B2C6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <TableView fx:id="table_cars" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <columns>
-                              <TableColumn prefWidth="75.0" text="Марка" />
-                              <TableColumn prefWidth="75.0" text="Номер" />
-                              <TableColumn prefWidth="75.0" text="Водитель" />
-                           </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="9.0" layoutY="1.0" prefHeight="515.0" prefWidth="194.0" style="-fx-background-color: #6476B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="pnl_penalties" prefHeight="515.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="194.0" prefHeight="515.0" prefWidth="438.0" style="-fx-background-color: #B2C6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <TableView fx:id="table_penalties" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Нарушение" />
-                              <TableColumn prefWidth="75.0" text="Описание" />
-                              <TableColumn prefWidth="75.0" text="Штраф" />
+                              <TableColumn fx:id="penaltyId" prefWidth="75.0" text="id" visible="false" />
+                              <TableColumn fx:id="penaltyViolation" prefWidth="75.0" text="Нарушение" />
+                              <TableColumn fx:id="penaltyDescription" prefWidth="75.0" text="Описание" />
+                              <TableColumn fx:id="penaltyPenalty" prefWidth="75.0" text="Штраф" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -60,6 +38,40 @@
                      <effect>
                         <DropShadow />
                      </effect>
+                     <children>
+                        <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Добавить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Сортировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="502.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
@@ -69,10 +81,11 @@
                      <children>
                         <TableView fx:id="table_drivers" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="ФИО" />
-                              <TableColumn prefWidth="75.0" text="Серия паспорта" />
-                              <TableColumn prefWidth="75.0" text="Номер паспорта" />
-                              <TableColumn prefWidth="75.0" text="Дата рождения" />
+                              <TableColumn fx:id="driverId" prefWidth="75.0" text="id" visible="false" />
+                              <TableColumn fx:id="driverFullName" prefWidth="75.0" text="ФИО" />
+                              <TableColumn fx:id="driverPassportSeries" prefWidth="75.0" text="Серия паспорта" />
+                              <TableColumn fx:id="driverPassportNumber" prefWidth="75.0" text="Номер паспорта" />
+                              <TableColumn fx:id="driverBirthday" prefWidth="75.0" text="Дата рождения" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -84,21 +97,53 @@
                      <effect>
                         <DropShadow />
                      </effect>
+                     <children>
+                        <Button layoutX="13.0" layoutY="31.0" mnemonicParsing="false" onAction="#addDriver" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Добавить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="105.0" mnemonicParsing="false" onAction="#editDriver" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="188.0" mnemonicParsing="false" onAction="#sortDriver" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Сортировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="501.0" mnemonicParsing="false" onAction="#deleteDriver" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="pnl_violations" layoutX="-2.0" prefHeight="515.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="pnl_cars" layoutY="1.0" prefHeight="515.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="194.0" prefHeight="515.0" prefWidth="438.0" style="-fx-background-color: #B2C6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView fx:id="table_violations" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="table_cars" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="id" visible="false" />
-                              <TableColumn prefWidth="75.0" text="Водитель" />
-                              <TableColumn prefWidth="75.0" text="Авто" />
-                              <TableColumn prefWidth="75.0" text="Время" />
-                              <TableColumn prefWidth="75.0" text="Штраф" />
-                              <TableColumn prefWidth="75.0" text="Оплачено" />
+                              <TableColumn fx:id="carId" prefWidth="75.0" text="id" visible="false" />
+                              <TableColumn fx:id="carBrand" prefWidth="75.0" text="Марка" />
+                              <TableColumn fx:id="carNumber" prefWidth="75.0" text="Номер" />
+                              <TableColumn fx:id="carDriver" prefWidth="75.0" text="Водитель" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -109,14 +154,109 @@
                   <AnchorPane layoutX="9.0" layoutY="1.0" prefHeight="515.0" prefWidth="194.0" style="-fx-background-color: #6476B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <effect>
                         <DropShadow />
-                     </effect></AnchorPane>
+                     </effect>
+                     <children>
+                        <Button layoutX="13.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Добавить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="181.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Сортировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="502.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pnl_violations" layoutX="-2.0" prefHeight="515.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="194.0" prefHeight="515.0" prefWidth="438.0" style="-fx-background-color: #B2C6FA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="table_violations" prefHeight="515.0" prefWidth="440.0" style="-fx-background-color: #B2C6FA;" stylesheets="@../style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="violationId" prefWidth="75.0" text="id" visible="false" />
+                              <TableColumn fx:id="violationDriver" prefWidth="75.0" text="Водитель" />
+                              <TableColumn fx:id="violationAuto" prefWidth="75.0" text="Авто" />
+                              <TableColumn fx:id="violationTime" prefWidth="75.0" text="Время" />
+                              <TableColumn fx:id="violationPenalty" prefWidth="75.0" text="Штраф" />
+                              <TableColumn fx:id="violationPaid" prefWidth="75.0" text="Оплачено" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="9.0" layoutY="1.0" prefHeight="515.0" prefWidth="194.0" style="-fx-background-color: #6476B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Button layoutX="13.0" layoutY="41.0" mnemonicParsing="false" onAction="#addViolation" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Добавить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="117.0" mnemonicParsing="false" onAction="#editViolation" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="191.0" mnemonicParsing="false" onAction="#sortViolation" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Сортировать" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="13.0" layoutY="495.0" mnemonicParsing="false" onAction="#deleteViolation" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="25.0" prefHeight="500.0" prefWidth="149.0" style="-fx-background-color: #2C47A4;" styleClass="anchor-pane" stylesheets="@../style/button.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <AnchorPane layoutY="25.0" prefHeight="500.0" prefWidth="149.0" style="-fx-background-color: #2C47A4;" styleClass="anchor-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <Button fx:id="btn_penalties" contentDisplay="TOP" layoutY="390.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" text="Нарушения" textFill="WHITE">
+            <Button fx:id="btn_penalties" contentDisplay="TOP" layoutY="390.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" stylesheets="@../style/nav.css" text="Нарушения" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -131,22 +271,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btn_violations" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" style="-fx-background-color: #6476B5;" text="Главная" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/main.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btn_drivers" contentDisplay="TOP" layoutY="130.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" text="Водители" textFill="WHITE">
+            <Button fx:id="btn_drivers" contentDisplay="TOP" layoutY="130.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" stylesheets="@../style/nav.css" text="Водители" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -161,7 +286,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btn_auto" contentDisplay="TOP" layoutY="260.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" text="Автомобили" textFill="WHITE">
+            <Button fx:id="btn_auto" contentDisplay="TOP" layoutY="260.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" stylesheets="@../style/nav.css" text="Автомобили" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -169,6 +294,21 @@
                   <ImageView fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/auto.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btn_violations" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="130.0" prefWidth="168.0" stylesheets="@../style/nav.css" text="Главная" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/main.png" />
                      </image>
                   </ImageView>
                </graphic>

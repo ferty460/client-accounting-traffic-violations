@@ -18,4 +18,9 @@ public class ViolationEntity {
     private Integer paid;
 
     private Date time;
+
+    @Override
+    public String toString() {
+        return String.valueOf(penalty.getPenalty());
+    }
 }

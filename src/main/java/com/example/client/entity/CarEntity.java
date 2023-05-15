@@ -16,4 +16,9 @@ public class CarEntity {
     private DriverEntity driver;
 
     private List<ViolationEntity> violations;
+
+    @Override
+    public String toString() {
+        return number;
+    }
 }

@@ -4,4 +4,9 @@
     -fx-font-size: 14px;
     -fx-pref-height: 50px;
     -fx-wrap-text: true;
+    -fx-border-color: #7db9ff;
+}
+
+.table-view {
+    -fx-background-color: #B2C6FA;
 }

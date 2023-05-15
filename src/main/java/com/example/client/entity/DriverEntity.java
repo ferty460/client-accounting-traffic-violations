@@ -21,4 +21,10 @@ public class DriverEntity {
     private List<CarEntity> cars;
 
     private List<ViolationEntity> violations;
+
+    @Override
+    public String toString() {
+        String[] name = fullName.split(" ");
+        return name[0] + " " + name[1].toUpperCase().charAt(0) + ". " + name[2].toUpperCase().charAt(0) + '.';
+    }
 }
