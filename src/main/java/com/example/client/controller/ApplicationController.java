@@ -19,6 +19,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+
 public class ApplicationController {
     public static String api = "http://localhost:2825/api/v1/";
     public static ObservableList<DriverEntity> driversData = FXCollections.observableArrayList();
@@ -127,10 +129,11 @@ public class ApplicationController {
 
     }
 
-
     @FXML
-    void addCar(ActionEvent event) {
-
+    void addCar(ActionEvent event) throws IOException {
+        CarEntity car = new CarEntity();
+        carsData.add(car);
+        Application.showCarDialog(car, carsData.size() - 1);
     }
 
     @FXML
@@ -151,7 +154,9 @@ public class ApplicationController {
 
     @FXML
     void addPenalty(ActionEvent event) {
-
+        PenaltyEntity penalty = new PenaltyEntity();
+        penaltiesData.add(penalty);
+        Application.showPenaltyDialog(penalty, penaltiesData.size() - 1);
     }
 
     @FXML

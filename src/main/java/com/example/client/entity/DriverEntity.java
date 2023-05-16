@@ -2,6 +2,7 @@ package com.example.client.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class DriverEntity {
 
     private String passportNumber;
 
-    private Date birthday;
+    private String birthday;
 
     private List<CarEntity> cars;
 
