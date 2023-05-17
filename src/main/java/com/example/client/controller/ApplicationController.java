@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -94,13 +95,33 @@ public class ApplicationController {
     }
 
     @FXML
-    void deleteDriver(ActionEvent event) {
-
+    void deleteDriver(ActionEvent event) throws IOException {
+        DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
+        if (selectedDriver != null) {
+            System.out.println(selectedDriver.getDriver_Id());
+            System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedDriver.getDriver_Id()));
+            driversData.remove(selectedDriver);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный водитель");
+            alert.setContentText("Пожалуйста, выберите водителя в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void editDriver(ActionEvent event) {
-
+        DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
+        if (selectedDriver != null) {
+            Application.showEditDriverDialog(selectedDriver, driversData.indexOf(selectedDriver));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный водитель");
+            alert.setContentText("Пожалуйста, выберите водителя в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -111,12 +132,25 @@ public class ApplicationController {
 
     @FXML
     void addViolation(ActionEvent event) {
-
+        ViolationEntity violation = new ViolationEntity();
+        violationsData.add(violation);
+        Application.showViolationDialog(violation, violationsData.size() - 1);
     }
 
     @FXML
-    void deleteViolation(ActionEvent event) {
-
+    void deleteViolation(ActionEvent event) throws IOException {
+        ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
+        if (selectedViolation != null) {
+            System.out.println(selectedViolation.getViolation_Id());
+            System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedViolation.getViolation_Id()));
+            violationsData.remove(selectedViolation);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранное нарушение");
+            alert.setContentText("Пожалуйста, выберите нарушение в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -126,6 +160,11 @@ public class ApplicationController {
 
     @FXML
     void sortViolation(ActionEvent event) {
+
+    }
+
+    @FXML
+    void payViolation(ActionEvent event) {
 
     }
 
@@ -206,46 +245,63 @@ public class ApplicationController {
     }
 
     public static void getDataViolations() throws Exception {
-        String res = http.get(api, "violation/all");
-        System.out.println(res);
-        JsonObject base = gson.fromJson(res, JsonObject.class);
-        JsonArray dataArr = base.getAsJsonArray("data");
-        for (int i = 0; i < dataArr.size(); i++) {
-            ViolationEntity newVio = gson.fromJson(dataArr.get(i).toString(), ViolationEntity.class);
-            violationsData.add(newVio);
+        try {
+            String res = http.get(api, "violation/all");
+            System.out.println(res);
+            JsonObject base = gson.fromJson(res, JsonObject.class);
+            JsonArray dataArr = base.getAsJsonArray("data");
+            for (int i = 0; i < dataArr.size(); i++) {
+                ViolationEntity newVio = gson.fromJson(dataArr.get(i).toString(), ViolationEntity.class);
+                violationsData.add(newVio);
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
         }
+
     }
 
     public static void getDataDrivers() throws Exception {
-        String res = http.get(api, "driver/all");
-        System.out.println(res);
-        JsonObject base = gson.fromJson(res, JsonObject.class);
-        JsonArray dataArr = base.getAsJsonArray("data");
-        for (int i = 0; i < dataArr.size(); i++) {
-            DriverEntity newDriver = gson.fromJson(dataArr.get(i).toString(), DriverEntity.class);
-            driversData.add(newDriver);
+        try {
+            String res = http.get(api, "driver/all");
+            System.out.println(res);
+            JsonObject base = gson.fromJson(res, JsonObject.class);
+            JsonArray dataArr = base.getAsJsonArray("data");
+            for (int i = 0; i < dataArr.size(); i++) {
+                DriverEntity newDriver = gson.fromJson(dataArr.get(i).toString(), DriverEntity.class);
+                driversData.add(newDriver);
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
         }
     }
 
     public static void getDataCars() throws Exception {
-        String res = http.get(api, "car/all");
-        System.out.println(res);
-        JsonObject base = gson.fromJson(res, JsonObject.class);
-        JsonArray dataArr = base.getAsJsonArray("data");
-        for (int i = 0; i < dataArr.size(); i++) {
-            CarEntity newCar = gson.fromJson(dataArr.get(i).toString(), CarEntity.class);
-            carsData.add(newCar);
+        try {
+            String res = http.get(api, "car/all");
+            System.out.println(res);
+            JsonObject base = gson.fromJson(res, JsonObject.class);
+            JsonArray dataArr = base.getAsJsonArray("data");
+            for (int i = 0; i < dataArr.size(); i++) {
+                CarEntity newCar = gson.fromJson(dataArr.get(i).toString(), CarEntity.class);
+                carsData.add(newCar);
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
         }
     }
 
     public static void getDataPenalties() throws Exception {
-        String res = http.get(api, "penalty/all");
-        System.out.println(res);
-        JsonObject base = gson.fromJson(res, JsonObject.class);
-        JsonArray dataArr = base.getAsJsonArray("data");
-        for (int i = 0; i < dataArr.size(); i++) {
-            PenaltyEntity newPenalty = gson.fromJson(dataArr.get(i).toString(), PenaltyEntity.class);
-            penaltiesData.add(newPenalty);
+        try {
+            String res = http.get(api, "penalty/all");
+            System.out.println(res);
+            JsonObject base = gson.fromJson(res, JsonObject.class);
+            JsonArray dataArr = base.getAsJsonArray("data");
+            for (int i = 0; i < dataArr.size(); i++) {
+                PenaltyEntity newPenalty = gson.fromJson(dataArr.get(i).toString(), PenaltyEntity.class);
+                penaltiesData.add(newPenalty);
+            }
+        } catch (NullPointerException e) {
+            e.getMessage();
         }
     }
 }

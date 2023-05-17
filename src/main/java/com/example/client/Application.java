@@ -1,11 +1,10 @@
 package com.example.client;
 
-import com.example.client.controller.AddCarController;
-import com.example.client.controller.AddDriverController;
-import com.example.client.controller.AddPenaltyController;
+import com.example.client.controller.*;
 import com.example.client.entity.CarEntity;
 import com.example.client.entity.DriverEntity;
 import com.example.client.entity.PenaltyEntity;
+import com.example.client.entity.ViolationEntity;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -31,11 +30,32 @@ public class Application extends javafx.application.Application {
             loader.setLocation(Application.class.getResource("view/addDriver.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Водитель");
+            dialogStage.setTitle("Добавление");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             AddDriverController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(driver, id);
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean showEditDriverDialog(DriverEntity driver, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Application.class.getResource("view/editDriver.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Редактирование");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            EditDriverController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setLabels(driver, id);
             dialogStage.showAndWait();
@@ -52,7 +72,7 @@ public class Application extends javafx.application.Application {
             loader.setLocation(Application.class.getResource("view/addCar.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Автомобиль");
+            dialogStage.setTitle("Добавление");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
@@ -73,13 +93,55 @@ public class Application extends javafx.application.Application {
             loader.setLocation(Application.class.getResource("view/addPenalty.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Штраф");
+            dialogStage.setTitle("Добавление");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             AddPenaltyController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setLabels(penalty, id);
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean showViolationDialog(ViolationEntity violation, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Application.class.getResource("view/addViolation.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Добавление");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            AddViolationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(violation, id);
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean showPayViolationDialog(ViolationEntity violation, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Application.class.getResource("view/payViolation.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Оплата");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            PayViolationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            // controller.setLabels(violation, id);
             dialogStage.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) {

@@ -15,9 +15,9 @@ public class ViolationEntity {
 
     private PenaltyEntity penalty;
 
-    private Integer paid;
+    private String paid;
 
-    private Date time;
+    private String time;
 
     @Override
     public String toString() {

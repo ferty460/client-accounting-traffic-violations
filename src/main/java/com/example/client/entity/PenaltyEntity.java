@@ -20,6 +20,6 @@ public class PenaltyEntity {
 
     @Override
     public String toString() {
-        return String.valueOf(penalty);
+        return kind;
     }
 }
