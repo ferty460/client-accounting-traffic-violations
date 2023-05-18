@@ -33,10 +33,14 @@ public class EditDriverController {
         this.driver = driverIn;
         this.driverId = driverId;
 
-        field_fullName.setText(driver.getFullName());
-        field_passportSeries.setText(driver.getPassportSeries());
-        field_passportNumber.setText(driver.getPassportNumber());
-        field_birthday.setText(driver.getBirthday());
+        try {
+            field_fullName.setText(driver.getFullName());
+            field_passportSeries.setText(driver.getPassportSeries());
+            field_passportNumber.setText(driver.getPassportNumber());
+            field_birthday.setText(driver.getBirthday());
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
     }
 
     @FXML
@@ -46,7 +50,6 @@ public class EditDriverController {
 
     @FXML
     void handleOk(ActionEvent event) throws IOException {
-        driver.setDriver_Id((long) driverId);
         driver.setFullName(field_fullName.getText());
         driver.setPassportSeries(field_passportSeries.getText());
         driver.setPassportNumber(field_passportNumber.getText());
@@ -55,11 +58,11 @@ public class EditDriverController {
         okClicked = true;
         driverStage.close();
         driversData.set(driverId, driver);
-        addDriver(driver);
+        updateDriver(driver);
     }
 
-    public static void addDriver(DriverEntity driver) throws IOException {
+    public static void updateDriver(DriverEntity driver) throws IOException {
         System.out.println(gson.toJson(driver));
-        System.out.println(http.post("http://localhost:2825/api/v1/driver/update", gson.toJson(driver)));
+        System.out.println(http.post("http://localhost:2825/api/v1/driver/update", gson.toJson(driver).toString()));
     }
 }

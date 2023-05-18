@@ -248,6 +248,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Button layoutX="13.0" layoutY="270.0" mnemonicParsing="false" onAction="#payViolation" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Оплатить" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>

@@ -38,10 +38,15 @@ public class AddCarController {
         this.car = carIn;
         this.carId = carId;
 
-        field_carBrand.setText(car.getBrand());
-        field_carNumber.setText(car.getNumber());
-        driverList.setItems(FXCollections.observableArrayList(driversData));
-        driverList.setValue(driversData.get(0));
+        try {
+            field_carBrand.setText(car.getBrand());
+            field_carNumber.setText(car.getNumber());
+            driverList.setItems(FXCollections.observableArrayList(driversData));
+            driverList.setValue(driversData.get(0));
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
+
     }
 
     @FXML

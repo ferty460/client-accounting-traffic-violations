@@ -36,10 +36,14 @@ public class AddDriverController {
         this.driver = driverIn;
         this.driverId = driverId;
 
-        field_fullName.setText(driver.getFullName());
-        field_passportSeries.setText(driver.getPassportSeries());
-        field_passportNumber.setText(driver.getPassportNumber());
-        field_birthday.setText(driver.getBirthday());
+        try {
+            field_fullName.setText(driver.getFullName());
+            field_passportSeries.setText(driver.getPassportSeries());
+            field_passportNumber.setText(driver.getPassportNumber());
+            field_birthday.setText(driver.getBirthday());
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
     }
 
     @FXML

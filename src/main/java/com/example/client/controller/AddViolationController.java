@@ -52,12 +52,16 @@ public class AddViolationController {
     }
 
     public void initialize() {
-        carList.setItems(FXCollections.observableArrayList(carsData));
-        carList.setValue(carsData.get(0));
-        penaltyList.setItems(FXCollections.observableArrayList(penaltiesData));
-        penaltyList.setValue(penaltiesData.get(0));
-        driverList.setItems(FXCollections.observableArrayList(driversData));
-        driverList.setValue(driversData.get(0));
+        try {
+            carList.setItems(FXCollections.observableArrayList(carsData));
+            carList.setValue(carsData.get(0));
+            penaltyList.setItems(FXCollections.observableArrayList(penaltiesData));
+            penaltyList.setValue(penaltiesData.get(0));
+            driverList.setItems(FXCollections.observableArrayList(driversData));
+            driverList.setValue(driversData.get(0));
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
     }
 
     @FXML

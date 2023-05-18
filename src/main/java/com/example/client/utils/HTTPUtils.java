@@ -1,13 +1,11 @@
 package com.example.client.utils;
 
-import com.google.gson.Gson;
 import okhttp3.*;
 
 import java.io.IOException;
 
 public class HTTPUtils {
     OkHttpClient client = new OkHttpClient();
-    Gson gson = new Gson();
 
     public String post(String url, String json) throws IOException {
         RequestBody body = RequestBody.create(MediaType.get("application/json; charset=utf-8"), json);

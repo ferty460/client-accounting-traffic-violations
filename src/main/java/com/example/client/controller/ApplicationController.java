@@ -98,9 +98,7 @@ public class ApplicationController {
     void deleteDriver(ActionEvent event) throws IOException {
         DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
         if (selectedDriver != null) {
-            System.out.println(selectedDriver.getDriver_Id());
-            System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedDriver.getDriver_Id()));
-            driversData.remove(selectedDriver);
+            Application.showDeleteDriverDialog(selectedDriver, driversData.indexOf(selectedDriver));
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ничего не выбрано");

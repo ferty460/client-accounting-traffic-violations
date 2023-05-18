@@ -34,9 +34,14 @@ public class AddPenaltyController {
         this.penalty = penaltyIn;
         this.penaltyId = penaltyId;
 
-        field_penaltyKind.setText(penalty.getKind());
-        field_penaltyDesc.setText(penalty.getDescription());
-        field_penaltySum.setText(String.valueOf(penalty.getPenalty()));
+        try {
+            field_penaltyKind.setText(penalty.getKind());
+            field_penaltyDesc.setText(penalty.getDescription());
+            field_penaltySum.setText(String.valueOf(penalty.getPenalty()));
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
+
     }
 
     @FXML
