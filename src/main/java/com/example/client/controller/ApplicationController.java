@@ -126,6 +126,7 @@ public class ApplicationController {
 
     @FXML
     void sortDriver(ActionEvent event) {
+        table_drivers.getItems().clear();
         Application.showSortDriverDialog();
     }
 
@@ -169,7 +170,8 @@ public class ApplicationController {
 
     @FXML
     void sortViolation(ActionEvent event) {
-
+        table_violations.getItems().clear();
+        Application.showSortViolationDialog();
     }
 
     @FXML
@@ -225,7 +227,8 @@ public class ApplicationController {
 
     @FXML
     void sortCar(ActionEvent event) {
-
+        table_cars.getItems().clear();
+        Application.showSortCarDialog();
     }
 
 
@@ -264,11 +267,6 @@ public class ApplicationController {
             alert.setContentText("Пожалуйста, выберите штраф в таблице");
             alert.showAndWait();
         }
-    }
-
-    @FXML
-    void sortPenalty(ActionEvent event) {
-
     }
 
     private void updateViolationTable() {
@@ -315,7 +313,6 @@ public class ApplicationController {
         } catch (NullPointerException e) {
             e.getMessage();
         }
-
     }
 
     public static void getDataDrivers() throws Exception {

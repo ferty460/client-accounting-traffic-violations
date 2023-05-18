@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="344.0" prefWidth="726.0" style="-fx-background-color: #B2C6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controller.SortCarController">
+   <children>
+      <AnchorPane prefHeight="88.0" prefWidth="600.0" style="-fx-background-color: #2C47A4;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="295.0" layoutY="27.0" text="Нарушение" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button layoutX="589.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleCancel" stylesheets="@../style/button.css" text="Отмена" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="63.0" layoutY="274.0" mnemonicParsing="false" onAction="#getAll" stylesheets="@../style/button.css" text="Вывести всех" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="200.0" layoutY="127.0" text="Принадлежащие водителю">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="driversList" layoutX="212.0" layoutY="183.0" prefHeight="25.0" prefWidth="203.0" />
+      <Button layoutX="454.0" layoutY="178.0" mnemonicParsing="false" onAction="#find" stylesheets="@../style/button.css" text="Поиск" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

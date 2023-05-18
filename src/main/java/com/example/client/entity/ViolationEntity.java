@@ -21,6 +21,6 @@ public class ViolationEntity {
 
     @Override
     public String toString() {
-        return String.valueOf(penalty.getPenalty());
+        return String.valueOf(penalty.getKind());
     }
 }

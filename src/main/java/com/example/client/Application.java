@@ -128,6 +128,26 @@ public class Application extends javafx.application.Application {
         }
     }
 
+    public static boolean showSortCarDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Application.class.getResource("view/sortCar.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Сортировка");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            SortCarController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean showPenaltyDialog(PenaltyEntity penalty, int id) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -225,6 +245,26 @@ public class Application extends javafx.application.Application {
             PayViolationController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setLabels(violation, id);
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean showSortViolationDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Application.class.getResource("view/sortViolation.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Сортировка");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            SortViolationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
             dialogStage.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) {

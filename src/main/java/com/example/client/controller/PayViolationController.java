@@ -68,7 +68,9 @@ public class PayViolationController {
         String errorMessage = "";
         if (!field_violationPay.getText().matches("[0-9]+")) {
             errorMessage = "Только целочисленный формат!";
-        }
+        } /*else if (Integer.parseInt(field_violationPay.getText()) + Integer.parseInt(violation.getPaid()) > violation.getPenalty().getPenalty()) {
+            errorMessage =
+        }*/
         if (errorMessage.length() == 0) return true;
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
