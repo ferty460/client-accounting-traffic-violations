@@ -1,6 +1,5 @@
 package com.example.client.controller;
 
-import com.example.client.entity.DriverEntity;
 import com.example.client.entity.PenaltyEntity;
 import com.example.client.entity.ViolationEntity;
 import javafx.event.ActionEvent;
@@ -9,6 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import static com.example.client.controller.ApplicationController.*;
 
 public class PayViolationController {
     @FXML
@@ -34,10 +37,14 @@ public class PayViolationController {
         this.violation = violationIn;
         this.violationId = violationId;
 
-        lbl_car.setText(violation.getCar().getBrand());
-        lbl_driver.setText(violation.getDriver().getFullName());
-        lbl_penalty.setText(violation.getPaid());
-        lbl_time.setText(violation.getTime());
+        try {
+            lbl_car.setText(violation.getCar().getBrand());
+            lbl_driver.setText(violation.getDriver().getFullName());
+            lbl_penalty.setText(violation.getPaid());
+            lbl_time.setText(violation.getTime());
+        } catch (IndexOutOfBoundsException e) {
+            e.getMessage();
+        }
     }
 
     @FXML
@@ -46,8 +53,15 @@ public class PayViolationController {
     }
 
     @FXML
-    void handleOk(ActionEvent event) {
-        violation.setPaid(violation.getPaid() + Integer.parseInt(field_violationPay.getText()));
+    void handleOk(ActionEvent event) throws IOException {
+        if (isInputValid()) {
+            violation.setPaid(violation.getPaid() + Integer.parseInt(field_violationPay.getText()));
+
+            okClicked = true;
+            payViolationStage.close();
+            violationsData.set(violationId, violation);
+            payViolation(violation);
+        }
     }
 
     private boolean isInputValid() {
@@ -65,5 +79,10 @@ public class PayViolationController {
             alert.showAndWait();
             return false;
         }
+    }
+
+    public static void payViolation(ViolationEntity violation) throws IOException {
+        System.out.println(gson.toJson(violation));
+        System.out.println(http.post("http://localhost:2825/api/v1/violation/update", gson.toJson(violation)));
     }
 }

@@ -47,7 +47,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="13.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                        <Button layoutX="13.0" layoutY="113.0" mnemonicParsing="false" onAction="#editPenalty" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -63,7 +63,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="14.0" layoutY="502.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                        <Button layoutX="14.0" layoutY="502.0" mnemonicParsing="false" onAction="#deletePenalty" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -164,7 +164,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="13.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
+                        <Button layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#editCar" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Редактировать" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -180,7 +180,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="13.0" layoutY="502.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
+                        <Button layoutX="13.0" layoutY="502.0" mnemonicParsing="false" onAction="#deleteCar" prefHeight="25.0" prefWidth="168.0" stylesheets="@../style/button.css" text="Удалить" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

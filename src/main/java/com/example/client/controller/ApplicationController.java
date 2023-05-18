@@ -98,7 +98,9 @@ public class ApplicationController {
     void deleteDriver(ActionEvent event) throws IOException {
         DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
         if (selectedDriver != null) {
-            Application.showDeleteDriverDialog(selectedDriver, driversData.indexOf(selectedDriver));
+            System.out.println(selectedDriver.getDriver_Id());
+            System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedDriver.getDriver_Id()));
+            driversData.remove(selectedDriver);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ничего не выбрано");
@@ -124,7 +126,7 @@ public class ApplicationController {
 
     @FXML
     void sortDriver(ActionEvent event) {
-
+        Application.showSortDriverDialog();
     }
 
 
@@ -140,7 +142,7 @@ public class ApplicationController {
         ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
         if (selectedViolation != null) {
             System.out.println(selectedViolation.getViolation_Id());
-            System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedViolation.getViolation_Id()));
+            System.out.println(http.delete("http://localhost:2825/api/v1/violation/", selectedViolation.getViolation_Id()));
             violationsData.remove(selectedViolation);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -153,7 +155,16 @@ public class ApplicationController {
 
     @FXML
     void editViolation(ActionEvent event) {
-
+        ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
+        if (selectedViolation != null) {
+            Application.showEditViolationDialog(selectedViolation, violationsData.indexOf(selectedViolation));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранное нарушение");
+            alert.setContentText("Пожалуйста, выберите нарушение в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -163,7 +174,16 @@ public class ApplicationController {
 
     @FXML
     void payViolation(ActionEvent event) {
-
+        ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
+        if (selectedViolation != null) {
+            Application.showPayViolationDialog(selectedViolation, violationsData.indexOf(selectedViolation));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранное нарушение");
+            alert.setContentText("Пожалуйста, выберите нарушение в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -174,13 +194,33 @@ public class ApplicationController {
     }
 
     @FXML
-    void deleteCar(ActionEvent event) {
-
+    void deleteCar(ActionEvent event) throws IOException {
+        CarEntity selectedCar = table_cars.getSelectionModel().getSelectedItem();
+        if (selectedCar != null) {
+            System.out.println(selectedCar.getCar_Id());
+            System.out.println(http.delete("http://localhost:2825/api/v1/car/", selectedCar.getCar_Id()));
+            carsData.remove(selectedCar);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный автомобиль");
+            alert.setContentText("Пожалуйста, выберите автомобиль в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void editCar(ActionEvent event) {
-
+        CarEntity selectedCar = table_cars.getSelectionModel().getSelectedItem();
+        if (selectedCar != null) {
+            Application.showEditCarDialog(selectedCar, carsData.indexOf(selectedCar));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный автомобиль");
+            alert.setContentText("Пожалуйста, выберите автомобиль в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -197,13 +237,33 @@ public class ApplicationController {
     }
 
     @FXML
-    void deletePenalty(ActionEvent event) {
-
+    void deletePenalty(ActionEvent event) throws IOException {
+        PenaltyEntity selectedPenalty = table_penalties.getSelectionModel().getSelectedItem();
+        if (selectedPenalty != null) {
+            System.out.println(selectedPenalty.getPenalty_Id());
+            System.out.println(http.delete("http://localhost:2825/api/v1/penalty/", selectedPenalty.getPenalty_Id()));
+            penaltiesData.remove(selectedPenalty);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный штраф");
+            alert.setContentText("Пожалуйста, выберите штраф в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void editPenalty(ActionEvent event) {
-
+        PenaltyEntity selectedPenalty = table_penalties.getSelectionModel().getSelectedItem();
+        if (selectedPenalty != null) {
+            Application.showEditPenaltyController(selectedPenalty, penaltiesData.indexOf(selectedPenalty));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутствует выбранный штраф");
+            alert.setContentText("Пожалуйста, выберите штраф в таблице");
+            alert.showAndWait();
+        }
     }
 
     @FXML

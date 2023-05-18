@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.ParseException;
 
 import static com.example.client.controller.ApplicationController.*;
 import static com.example.client.controller.ApplicationController.gson;
