@@ -46,7 +46,6 @@ public class AddCarController {
         } catch (IndexOutOfBoundsException e) {
             e.getMessage();
         }
-
     }
 
     @FXML

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B2C6FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controller.PayViolationController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B2C6FA;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controller.PayViolationController">
    <children>
       <AnchorPane prefHeight="88.0" prefWidth="600.0" style="-fx-background-color: #2C47A4;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -48,7 +48,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="field_violationPaid" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="field_violationPay" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Время" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="18.0" />
