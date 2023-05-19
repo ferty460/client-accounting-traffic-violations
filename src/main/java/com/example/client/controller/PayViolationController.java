@@ -55,7 +55,7 @@ public class PayViolationController {
     @FXML
     void handleOk(ActionEvent event) throws IOException {
         if (isInputValid()) {
-            violation.setPaid(violation.getPaid() + Integer.parseInt(field_violationPay.getText()));
+            violation.setPaid(field_violationPay.getText());
 
             okClicked = true;
             payViolationStage.close();
@@ -68,9 +68,9 @@ public class PayViolationController {
         String errorMessage = "";
         if (!field_violationPay.getText().matches("[0-9]+")) {
             errorMessage = "Только целочисленный формат!";
-        } /*else if (Integer.parseInt(field_violationPay.getText()) + Integer.parseInt(violation.getPaid()) > violation.getPenalty().getPenalty()) {
-            errorMessage =
-        }*/
+        } else if (Integer.parseInt(field_violationPay.getText()) > violation.getPenalty().getPenalty()) {
+            errorMessage = "Переплата";
+        }
         if (errorMessage.length() == 0) return true;
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
