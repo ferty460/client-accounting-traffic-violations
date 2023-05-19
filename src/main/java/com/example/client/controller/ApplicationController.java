@@ -88,7 +88,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void addDriver(ActionEvent event) {
+    void addDriver(ActionEvent event) throws NullPointerException {
         DriverEntity driver = new DriverEntity();
         driversData.add(driver);
         Application.showDriverDialog(driver, driversData.size() - 1);
@@ -99,15 +99,9 @@ public class ApplicationController {
         try {
             DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
             if (selectedDriver != null) {
+                driversData.remove(selectedDriver);
                 System.out.println(selectedDriver.getDriver_Id());
                 System.out.println(http.delete("http://localhost:2825/api/v1/driver/", selectedDriver.getDriver_Id()));
-                driversData.remove(selectedDriver);
-            } else if (selectedDriver.getViolations() != null || selectedDriver.getCars() != null) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Ошибка");
-                alert.setHeaderText("Данный водитель есть в составе других сущностей");
-                alert.setContentText("Пожалуйста, выберите водителя в таблице");
-                alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ничего не выбрано");
@@ -121,7 +115,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void editDriver(ActionEvent event) {
+    void editDriver(ActionEvent event) throws NullPointerException {
         DriverEntity selectedDriver = table_drivers.getSelectionModel().getSelectedItem();
         if (selectedDriver != null) {
             Application.showEditDriverDialog(selectedDriver, driversData.indexOf(selectedDriver));
@@ -135,14 +129,14 @@ public class ApplicationController {
     }
 
     @FXML
-    void sortDriver(ActionEvent event) {
+    void sortDriver(ActionEvent event) throws NullPointerException {
         table_drivers.getItems().clear();
         Application.showSortDriverDialog();
     }
 
 
     @FXML
-    void addViolation(ActionEvent event) {
+    void addViolation(ActionEvent event) throws NullPointerException {
         ViolationEntity violation = new ViolationEntity();
         violationsData.add(violation);
         Application.showViolationDialog(violation, violationsData.size() - 1);
@@ -153,9 +147,9 @@ public class ApplicationController {
         try {
             ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
             if (selectedViolation != null) {
+                violationsData.remove(selectedViolation);
                 System.out.println(selectedViolation.getViolation_Id());
                 System.out.println(http.delete("http://localhost:2825/api/v1/violation/", selectedViolation.getViolation_Id()));
-                violationsData.remove(selectedViolation);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ничего не выбрано");
@@ -169,7 +163,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void editViolation(ActionEvent event) {
+    void editViolation(ActionEvent event) throws NullPointerException {
         ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
         if (selectedViolation != null) {
             Application.showEditViolationDialog(selectedViolation, violationsData.indexOf(selectedViolation));
@@ -183,13 +177,13 @@ public class ApplicationController {
     }
 
     @FXML
-    void sortViolation(ActionEvent event) {
+    void sortViolation(ActionEvent event) throws NullPointerException {
         table_violations.getItems().clear();
         Application.showSortViolationDialog();
     }
 
     @FXML
-    void payViolation(ActionEvent event) {
+    void payViolation(ActionEvent event) throws NullPointerException {
         ViolationEntity selectedViolation = table_violations.getSelectionModel().getSelectedItem();
         if (selectedViolation != null) {
             Application.showPayViolationDialog(selectedViolation, violationsData.indexOf(selectedViolation));
@@ -203,7 +197,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void addCar(ActionEvent event) throws IOException {
+    void addCar(ActionEvent event) throws NullPointerException {
         CarEntity car = new CarEntity();
         carsData.add(car);
         Application.showCarDialog(car, carsData.size() - 1);
@@ -214,9 +208,9 @@ public class ApplicationController {
         try {
             CarEntity selectedCar = table_cars.getSelectionModel().getSelectedItem();
             if (selectedCar != null) {
+                carsData.remove(selectedCar);
                 System.out.println(selectedCar.getCar_Id());
                 System.out.println(http.delete("http://localhost:2825/api/v1/car/", selectedCar.getCar_Id()));
-                carsData.remove(selectedCar);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ничего не выбрано");
@@ -230,7 +224,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void editCar(ActionEvent event) {
+    void editCar(ActionEvent event) throws NullPointerException {
         CarEntity selectedCar = table_cars.getSelectionModel().getSelectedItem();
         if (selectedCar != null) {
             Application.showEditCarDialog(selectedCar, carsData.indexOf(selectedCar));
@@ -244,14 +238,14 @@ public class ApplicationController {
     }
 
     @FXML
-    void sortCar(ActionEvent event) {
+    void sortCar(ActionEvent event) throws NullPointerException {
         table_cars.getItems().clear();
         Application.showSortCarDialog();
     }
 
 
     @FXML
-    void addPenalty(ActionEvent event) {
+    void addPenalty(ActionEvent event) throws NullPointerException {
         PenaltyEntity penalty = new PenaltyEntity();
         penaltiesData.add(penalty);
         Application.showPenaltyDialog(penalty, penaltiesData.size() - 1);
@@ -262,9 +256,9 @@ public class ApplicationController {
         try {
             PenaltyEntity selectedPenalty = table_penalties.getSelectionModel().getSelectedItem();
             if (selectedPenalty != null) {
+                penaltiesData.remove(selectedPenalty);
                 System.out.println(selectedPenalty.getPenalty_Id());
                 System.out.println(http.delete("http://localhost:2825/api/v1/penalty/", selectedPenalty.getPenalty_Id()));
-                penaltiesData.remove(selectedPenalty);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ничего не выбрано");
@@ -278,7 +272,7 @@ public class ApplicationController {
     }
 
     @FXML
-    void editPenalty(ActionEvent event) {
+    void editPenalty(ActionEvent event) throws NullPointerException {
         PenaltyEntity selectedPenalty = table_penalties.getSelectionModel().getSelectedItem();
         if (selectedPenalty != null) {
             Application.showEditPenaltyController(selectedPenalty, penaltiesData.indexOf(selectedPenalty));
@@ -384,6 +378,6 @@ public class ApplicationController {
 
     @FXML
     void getHelp(ActionEvent event) throws IOException {
-        Process process = new ProcessBuilder("hh.exe", "proga.chm").start();
+        Process process = new ProcessBuilder("hh.exe", "helper.chm").start();
     }
 }
